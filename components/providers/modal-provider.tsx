@@ -5,6 +5,7 @@ import { CreateServerModal } from "@/components/models/create-server-modal";
 import { useModal } from "@/hooks/use-modal-store";
 import { InviteModal } from "@/components/models/invite-modal";
 import { EditServerModal } from "@/components/models/edit-server-modal";
+import { MembersModal } from "@/components/models/members-modal";
 
 export const ModalProvider = () => {
   const { type, isOpen, mounted, setMounted } = useModal();
@@ -20,12 +21,15 @@ export const ModalProvider = () => {
   const isCreateServerModalOpen = isOpen && type === "createServer";
   const isInviteModalOpen = isOpen && type === "invite";
   const isEditServerModalOpen = isOpen && type === "editServer";
+  const isMembersModalOpen = isOpen && type === "members";
+
 
   return (
     <>
       {isCreateServerModalOpen && <CreateServerModal />}
       {isInviteModalOpen && <InviteModal />}
       {isEditServerModalOpen && <EditServerModal />}
+      {isMembersModalOpen && <MembersModal />}
     </>
   );
 };
