@@ -6,6 +6,7 @@ import { useModal } from "@/hooks/use-modal-store";
 import { InviteModal } from "@/components/models/invite-modal";
 import { EditServerModal } from "@/components/models/edit-server-modal";
 import { MembersModal } from "@/components/models/members-modal";
+import { CreateChannelModal } from "@/components/models/create-channel-model";
 
 export const ModalProvider = () => {
   const { type, isOpen, mounted, setMounted } = useModal();
@@ -22,6 +23,7 @@ export const ModalProvider = () => {
   const isInviteModalOpen = isOpen && type === "invite";
   const isEditServerModalOpen = isOpen && type === "editServer";
   const isMembersModalOpen = isOpen && type === "members";
+  const isCreateChannelModalOpen = isOpen && type === "createChannel";
 
 
   return (
@@ -30,6 +32,7 @@ export const ModalProvider = () => {
       {isInviteModalOpen && <InviteModal />}
       {isEditServerModalOpen && <EditServerModal />}
       {isMembersModalOpen && <MembersModal />}
+      {isCreateChannelModalOpen && <CreateChannelModal />}
     </>
   );
 };
