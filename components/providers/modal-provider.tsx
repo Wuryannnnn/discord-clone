@@ -7,7 +7,8 @@ import { InviteModal } from "@/components/models/invite-modal";
 import { EditServerModal } from "@/components/models/edit-server-modal";
 import { MembersModal } from "@/components/models/members-modal";
 import { CreateChannelModal } from "@/components/models/create-channel-model";
-
+import { LeaveServerModal } from "@/components/models/leave-server-modal";
+import { DeleteServerModal } from "@/components/models/delete-server-modal";
 export const ModalProvider = () => {
   const { type, isOpen, mounted, setMounted } = useModal();
 
@@ -24,6 +25,8 @@ export const ModalProvider = () => {
   const isEditServerModalOpen = isOpen && type === "editServer";
   const isMembersModalOpen = isOpen && type === "members";
   const isCreateChannelModalOpen = isOpen && type === "createChannel";
+  const isLeaveServerModalOpen = isOpen && type === "leaveServer";
+  const isDeleteServerModalOpen = isOpen && type === "deleteServer";
 
 
   return (
@@ -33,6 +36,8 @@ export const ModalProvider = () => {
       {isEditServerModalOpen && <EditServerModal />}
       {isMembersModalOpen && <MembersModal />}
       {isCreateChannelModalOpen && <CreateChannelModal />}
+      {isLeaveServerModalOpen && <LeaveServerModal />}
+      {isDeleteServerModalOpen && <DeleteServerModal />}
     </>
   );
 };
