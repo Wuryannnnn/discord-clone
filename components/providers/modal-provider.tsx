@@ -9,6 +9,9 @@ import { MembersModal } from "@/components/models/members-modal";
 import { CreateChannelModal } from "@/components/models/create-channel-model";
 import { LeaveServerModal } from "@/components/models/leave-server-modal";
 import { DeleteServerModal } from "@/components/models/delete-server-modal";
+import { DeleteChannelModal } from "@/components/models/delete-channel-modal";
+import { EditChannelModal } from "@/components/models/edit-channel-modal";
+
 export const ModalProvider = () => {
   const { type, isOpen, mounted, setMounted } = useModal();
 
@@ -27,7 +30,8 @@ export const ModalProvider = () => {
   const isCreateChannelModalOpen = isOpen && type === "createChannel";
   const isLeaveServerModalOpen = isOpen && type === "leaveServer";
   const isDeleteServerModalOpen = isOpen && type === "deleteServer";
-
+  const isDeleteChannelModalOpen = isOpen && type === "deleteChannel";
+  const isEditChannelModalOpen = isOpen && type === "editChannel";
 
   return (
     <>
@@ -38,6 +42,8 @@ export const ModalProvider = () => {
       {isCreateChannelModalOpen && <CreateChannelModal />}
       {isLeaveServerModalOpen && <LeaveServerModal />}
       {isDeleteServerModalOpen && <DeleteServerModal />}
+      {isDeleteChannelModalOpen && <DeleteChannelModal />}
+      {isEditChannelModalOpen && <EditChannelModal />}
     </>
   );
 };
