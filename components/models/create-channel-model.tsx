@@ -13,6 +13,7 @@ import { useParams } from "next/navigation";
 import axios from "axios"
 import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
+import { useEffect } from "react";
 import {
     Select,
     SelectContent,
@@ -32,17 +33,27 @@ const formSchema = z.object({
 })
 
 export const CreateChannelModal = () => {
-    const {isOpen, onClose, type, mounted} = useModal();
+    const {isOpen, onClose, type, mounted, data} = useModal();
     const router = useRouter();
     const params = useParams();
+
+    const {channelType} = data;
 
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues:{
             name:"",
-            type: ChannelType.TEXT,
+            type: channelType || ChannelType.TEXT,
         }
     });
+
+    useEffect(() => {
+        if(channelType){
+            form.setValue("type", channelType);
+        }else{
+            form.setValue("type", ChannelType.TEXT);
+        }
+    }, [channelType, form]);
 
     const isLoading = form.formState.isSubmitting;
 
