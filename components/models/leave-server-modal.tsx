@@ -7,8 +7,7 @@ import { Button } from "../ui/button";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
-
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 export const LeaveServerModal = () => {
     const {isOpen, onOpen ,onClose, type, data} = useModal();
     const router = useRouter();
@@ -38,9 +37,13 @@ export const LeaveServerModal = () => {
         <Dialog open={isOpen && type === "leaveServer"} onOpenChange={onClose}>
             <DialogContent className="bg-white text-black p-0 overflow-hidden">
                 <DialogHeader className="pt-8 px-6">
-                    <DialogTitle className="text-2xl text-center">
-                        Leave Server
-                    </DialogTitle>
+                    
+                        <DialogTitle className="text-2xl text-center">
+                            <VisuallyHidden>
+                                Leave Server
+                            </VisuallyHidden>
+                        </DialogTitle>
+                    
                     <DialogDescription className="text-center text-zinc-500">
                         Are you sure you want to leave <span className="font-semibold text-indigo-500">{server?.name}</span>?
                     </DialogDescription>

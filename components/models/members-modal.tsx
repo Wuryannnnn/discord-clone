@@ -13,6 +13,7 @@ import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
 import { MemberRole } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 const roleIconMap = {
     "GUEST": null,
@@ -74,9 +75,13 @@ export const MembersModal = () => {
         <Dialog open={isOpen && type === "members"} onOpenChange={onClose}>
             <DialogContent className="bg-white text-black overflow-hidden">
                 <DialogHeader className="pt-8 px-6">
-                    <DialogTitle className="text-2xl text-center">
-                        Manage Members
-                    </DialogTitle>
+                    
+                        <DialogTitle className="text-2xl text-center">
+                            <VisuallyHidden>
+                                Manage Members
+                            </VisuallyHidden>
+                        </DialogTitle>
+                    
                     <DialogDescription className="text-center text-zinc-500">
                         {server?.members?.length} Members
                     </DialogDescription>

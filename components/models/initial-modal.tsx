@@ -14,7 +14,7 @@ import { FileUpload } from "../file-upload";
 
 import axios from "axios"
 import { useRouter } from "next/navigation";
-
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 const formSchema = z.object({
     name: z.string().min(1, {
         message: "Server name is required."
@@ -61,9 +61,13 @@ export const InitialModal = () =>{
         <Dialog open>
             <DialogContent className="bg-white text-black p-0 overflow-hidden">
                 <DialogHeader className="pt-8 px-6">
-                    <DialogTitle className="text-2xl text-center">
-                        Customize your server
-                    </DialogTitle>
+                
+                        <DialogTitle className="text-2xl text-center">
+                            <VisuallyHidden>
+                                Customize your server
+                            </VisuallyHidden>
+                        </DialogTitle>
+                  
                     <DialogDescription className="text-center text-zinc-500">
                         Give your server a personality with a name and image. You can always change it later.
                     </DialogDescription>

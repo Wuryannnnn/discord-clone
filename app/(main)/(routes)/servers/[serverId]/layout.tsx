@@ -7,7 +7,7 @@ import {ServerSidebar} from "@/components/server/server-sidebar"
 const ServerIdLayout = async ({
     children,
     params,
-} : {children: React.ReactNode; params: Promise<{ serverId: string }>;}) => {
+} : {children: React.ReactNode; params: Promise<{ serverId: string }>}) => {
     const { redirectToSignIn } = await auth()
     const profile = await currentProfile();
     if (!profile) return redirectToSignIn();
@@ -29,8 +29,8 @@ const ServerIdLayout = async ({
 
     return (
         <div className="h-full">
-            <div className="md:flex h-full w-60 z-20 flex-col fixed inset-y-0">
-                <ServerSidebar serverId = {(await params).serverId} />
+            <div className="invisible md:visible flex h-full w-60 z-20 flex-col fixed inset-y-0">
+                <ServerSidebar serverId = {serverId} />
             </div>
             <main className="h-full md:pl-60">
             {children}

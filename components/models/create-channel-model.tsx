@@ -22,7 +22,7 @@ import {
     SelectValue
 } from '@/components/ui/select'
 import { ChannelType } from "@prisma/client";
-
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 const formSchema = z.object({
     name: z.string().min(1, {
         message: "Channel name is required."
@@ -89,7 +89,9 @@ export const CreateChannelModal = () => {
             <DialogContent className="bg-white text-black p-0 overflow-hidden">
                 <DialogHeader className="pt-8 px-6">
                     <DialogTitle className="text-2xl text-center">
-                        Create Channel
+                        <VisuallyHidden>
+                            Create Channel
+                        </VisuallyHidden>
                     </DialogTitle>
                 </DialogHeader>
                 <Form {...form}>

@@ -15,7 +15,7 @@ import axios from "axios"
 import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
 import { useEffect } from "react";
-
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 const formSchema = z.object({
     name: z.string().min(1, {
         message: "Server name is required."
@@ -74,7 +74,9 @@ export const EditServerModal = () => {
             <DialogContent className="bg-white text-black p-0 overflow-hidden">
                 <DialogHeader className="pt-8 px-6">
                     <DialogTitle className="text-2xl text-center">
-                        Customize your server
+                        <VisuallyHidden>
+                            Customize your server
+                        </VisuallyHidden>
                     </DialogTitle>
                     <DialogDescription className="text-center text-zinc-500">
                         Give your server a personality with a name and image. You can always change it later.

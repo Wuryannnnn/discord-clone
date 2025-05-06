@@ -9,8 +9,7 @@ import { Check, Copy, RefreshCw } from "lucide-react";
 import { userOrigin } from "@/hooks/use-origin";
 import { useState } from "react";
 import axios from "axios";
-
-
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 export const InviteModal = () => {
     const {isOpen, onOpen ,onClose, type, data} = useModal();
 
@@ -50,9 +49,13 @@ export const InviteModal = () => {
         <Dialog open={isOpen && type === "invite"} onOpenChange={onClose}>
             <DialogContent className="bg-white text-black p-0 overflow-hidden">
                 <DialogHeader className="pt-8 px-6">
-                    <DialogTitle className="text-2xl text-center">
-                        Invite Friends
-                    </DialogTitle>
+                   
+                        <DialogTitle className="text-2xl text-center">
+                            <VisuallyHidden>
+                                Invite Friends
+                            </VisuallyHidden>
+                        </DialogTitle>
+                  
                 </DialogHeader>
                 <div className="p-6">
                     <Label className="uppercase text-xs font-bold text-zinc-500 drak:text-secondary/70">
