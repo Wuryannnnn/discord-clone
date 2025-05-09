@@ -11,6 +11,7 @@ import { LeaveServerModal } from "@/components/models/leave-server-modal";
 import { DeleteServerModal } from "@/components/models/delete-server-modal";
 import { DeleteChannelModal } from "@/components/models/delete-channel-modal";
 import { EditChannelModal } from "@/components/models/edit-channel-modal";
+import { MessageFileModal } from "@/components/models/message-file-modal";
 
 export const ModalProvider = () => {
   const { type, isOpen, mounted, setMounted } = useModal();
@@ -32,6 +33,7 @@ export const ModalProvider = () => {
   const isDeleteServerModalOpen = isOpen && type === "deleteServer";
   const isDeleteChannelModalOpen = isOpen && type === "deleteChannel";
   const isEditChannelModalOpen = isOpen && type === "editChannel";
+  const isMessageFileModalOpen = isOpen && type === "messageFile";
 
   return (
     <>
@@ -44,6 +46,7 @@ export const ModalProvider = () => {
       {isDeleteServerModalOpen && <DeleteServerModal />}
       {isDeleteChannelModalOpen && <DeleteChannelModal />}
       {isEditChannelModalOpen && <EditChannelModal />}
+      {isMessageFileModalOpen && <MessageFileModal />}
     </>
   );
 };
